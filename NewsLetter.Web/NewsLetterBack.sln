@@ -5,11 +5,11 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsLetter.Web", "NewsLetter.Web.csproj", "{EA76B505-E1B1-45D6-BD1A-697A1F29B47C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsLetter.Core", "..\TodoList.Core\NewsLetter.Core.csproj", "{5E8051CC-F9B1-4C4F-ACA2-3528DD4D3AFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsLetter.Core", "..\NewsLetter.Core\NewsLetter.Core.csproj", "{5E8051CC-F9B1-4C4F-ACA2-3528DD4D3AFF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsLetter.Infrastructure", "..\TodoList.Infrastructure\NewsLetter.Infrastructure.csproj", "{C4982C54-176F-4F1F-B304-83BA72CB87A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsLetter.Infrastructure", "..\NewsLetter.Infrastructure\NewsLetter.Infrastructure.csproj", "{C4982C54-176F-4F1F-B304-83BA72CB87A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsLetter.Application", "..\TodoList.Application\NewsLetter.Application.csproj", "{5237927C-3A9C-4353-AC0A-8A80F7FB3D26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsLetter.Application", "..\NewsLetter.Application\NewsLetter.Application.csproj", "{5237927C-3A9C-4353-AC0A-8A80F7FB3D26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
