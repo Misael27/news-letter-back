@@ -16,7 +16,7 @@ namespace NewsLetter.Web.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{id:string}")]
+        [HttpGet("{id:length(24)}")]
         public async Task<Core.Entities.NewsLetter> GetById(string id)
         {
             return await _mediator.Send(new GetNewsLetterQuery(id));
@@ -28,7 +28,7 @@ namespace NewsLetter.Web.Controllers
             return await _mediator.Send(request);
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:length(24)}")]
         public async Task<Unit> DeleteById(string id)
         {
             return await _mediator.Send(new DeleteNewsLetterCommand(id));
