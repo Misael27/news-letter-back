@@ -42,6 +42,10 @@ namespace NewsLetter.Application.NewsLetter.Commands.UpsertNewsLetter
 
         public async Task<Core.Entities.NewsLetter> UpdateNewsLetter(UpsertNewsLetterCommand request)
         {
+            if (request.Id == null) 
+            {
+                throw new NotFoundException("NewsLetter", "");
+            }
             var newsLetter = await _newsLetterRepository.GetAsync(request.Id);
             if (newsLetter == null)
             {

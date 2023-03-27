@@ -8,6 +8,10 @@ using NewsLetter.Application.ValidationHandle.Filters;
 using NewsLetter.Infrastructure.Repositories;
 using NewsLetter.Core.IRepositories;
 using NewsLetter.Application.NewsLetter.Commands.UpsertNewsLetter;
+using NewsLetter.Web.AuthConfigure;
+using Microsoft.Extensions.Configuration;
+using NewsLetter.Core.Entities;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +40,29 @@ builder.Services.Configure<NewsLetterDatabaseSettings>(builder.Configuration.Get
 builder.Services.AddSingleton<DataContext>();
 builder.Services.AddScoped<INewsLetterRepository, NewsLetterRepository>();
 
+AuthConfigurer.Configure(builder.Services, builder.Configuration);
+
+var newsLetterDatabaseSettings = builder.Configuration.GetSection("NewsLetterDatabase");
+
+builder.Services.AddIdentity<User, ApplicationRole>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 4;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequiredUniqueChars = 1;
+
+    // Lockout settings
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+    options.Lockout.MaxFailedAccessAttempts = 10;
+    options.Lockout.AllowedForNewUsers = true;
+})
+    .AddMongoDbStores<User, ApplicationRole, Guid>
+    (
+        newsLetterDatabaseSettings[nameof(NewsLetterDatabaseSettings.ConnectionString)], newsLetterDatabaseSettings[nameof(NewsLetterDatabaseSettings.DatabaseName)]
+    );
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,6 +73,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("corsapp");
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
