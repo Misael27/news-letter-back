@@ -5,7 +5,6 @@ News letter application
 ## Features
 
 - .Net Core 6
-- EF Core
 - DDD Architecture
 - MediatR pattern
 - Open Api
