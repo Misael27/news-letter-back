@@ -10,6 +10,8 @@ News letter application
 - MediatR pattern
 - Open Api
 - MongoDB
+- Oauth, JWT
+- xUnit
 
 ## Motivation
 
