@@ -40,6 +40,7 @@ namespace NewsLetter.Web.AuthConfigure
 
             return new AccessTokenDTO
             {
+                UserName = userName,
                 Token = encodedJwt,
                 IssuedAt = DateTime.Now,
                 ExpiresAt = _jwtOptions.Expiration

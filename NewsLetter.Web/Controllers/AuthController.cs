@@ -26,7 +26,7 @@ namespace NewsLetter.Web.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(CredentialsBindingModel user)
+        public async Task<IActionResult> Create(CreateCredentialsBindingModel user)
         {
             if (!ModelState.IsValid)
             {
@@ -34,6 +34,7 @@ namespace NewsLetter.Web.Controllers
             }
             User appUser = new User
             {
+                FullName = user.FullName,
                 UserName = user.Email,
                 Email = user.Email
             };

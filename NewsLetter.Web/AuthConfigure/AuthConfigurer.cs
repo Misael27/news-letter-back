@@ -9,7 +9,6 @@ namespace NewsLetter.Web.AuthConfigure
     {
         public static void Configure(IServiceCollection services, IConfiguration configuration)
         {
-
             if (bool.Parse(configuration["Authentication:JwtBearer:IsEnabled"]))
             {
                 services.AddSingleton<IJwtFactory, JwtFactory>();
@@ -42,7 +41,7 @@ namespace NewsLetter.Web.AuthConfigure
 
                         // Validate the JWT Issuer (iss) claim
                         ValidateIssuer = true,
-                        ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)], //configuration["Authentication:JwtBearer:Issuer"]
+                        ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
 
                         // Validate the JWT Audience (aud) claim
                         ValidateAudience = true,
@@ -54,9 +53,8 @@ namespace NewsLetter.Web.AuthConfigure
                         // If you want to allow a certain amount of clock drift, set that here
                         ClockSkew = TimeSpan.Zero
                     };
-
-
                 });
+                services.AddAuthorization();
             }
         }
 

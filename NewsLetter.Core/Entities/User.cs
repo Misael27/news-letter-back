@@ -11,5 +11,7 @@ namespace NewsLetter.Core.Entities
     [CollectionName("Users")]
     public class User : MongoIdentityUser<Guid>
     {
+        public string? FullName { get; set; }
+
     }
 }

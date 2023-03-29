@@ -1,13 +1,16 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NewsLetter.Application.NewsLetter.Commands.DeleteNewsLetter;
 using NewsLetter.Application.NewsLetter.Commands.UpsertNewsLetter;
 using NewsLetter.Application.NewsLetter.Queries.GetNewsLetter;
+using System.Data;
 
 namespace NewsLetter.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class NewsLetterController : ControllerBase
     {
         private IMediator _mediator;
